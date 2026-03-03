@@ -1,7 +1,7 @@
 import React from 'react';
-import HomeNavbar from '../components/home/HomeNavbar';
-import EditProfileModal from '../components/home/EditProfileModal';
-import { useProfileController } from '../hooks/useProfileController';
+import HomeNavbar from '../components/layout/HomeNavbar';
+import EditProfileModal from '../components/profile/EditProfileModal';
+import { useProfileController } from '../controllers/useProfileController';
 import { motion } from 'framer-motion';
 import { User, Shield, Calendar, MapPin, Mail, Edit3, Camera } from 'lucide-react';
 import { SERVER_URL, DEFAULT_PROFILE_IMAGE } from '../services/api';

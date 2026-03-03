@@ -4,7 +4,7 @@ import * as Select from '@radix-ui/react-select';
 import { X, Upload, Calendar, MapPin, Tag, Type, AlignLeft, PlusCircle, Eye, ChevronDown, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DEFAULT_EVENT_IMAGE } from '../../services/api';
-import { useCreateEventController, CATEGORIES, VISIBILITY_OPTIONS } from '../../hooks/useCreateEventController';
+import { useCreateEventController, CATEGORIES, VISIBILITY_OPTIONS } from '../../controllers/useCreateEventController';
 
 const CreateEventModal = ({ isOpen, onOpenChange, onSubmit, initialData }) => {
     const {

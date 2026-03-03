@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRegisterController } from '../hooks/useRegisterController';
+import { useRegisterController } from '../controllers/useAuthController';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { UserPlus, Mail, Lock, User, AlertCircle, CheckCircle2 } from 'lucide-react';

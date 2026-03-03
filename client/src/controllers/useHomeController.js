@@ -70,7 +70,6 @@ export const useHomeController = () => {
         setIsModalOpen,
         editingEvent,
         isDetailsModalOpen,
-        setIsDetailsModalOpen,
         selectedEvent,
         showGuestsModal,
         handleReviewEvent,

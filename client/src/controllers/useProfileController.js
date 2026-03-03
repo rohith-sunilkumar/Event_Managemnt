@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import api from '../services/api';
+import * as eventModel from '../models/eventModel';
 
 export const useProfileController = () => {
     const { user, logout, updateProfile } = useAuth();
@@ -10,30 +10,24 @@ export const useProfileController = () => {
     const [loading, setLoading] = useState(true);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
-    const fetchStats = async () => {
-        try {
-            const response = await api.get('/events/stats');
-            if (response.data.success) {
-                setStatsData(response.data.stats);
-            }
-        } catch (error) {
-            console.error('Error fetching profile stats:', error);
-        } finally {
-            setLoading(false);
-        }
-    };
-
     useEffect(() => {
+        const fetchStats = async () => {
+            try {
+                // stats endpoint lives alongside events
+                const { default: api } = await import('../services/api');
+                const response = await api.get('/events/stats');
+                if (response.data.success) setStatsData(response.data.stats);
+            } catch (error) {
+                console.error('Error fetching profile stats:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
         fetchStats();
     }, []);
 
-    const handleCreateEventRedirect = () => {
-        navigate('/');
-    };
-
-    const toggleEditModal = (isOpen) => {
-        setIsEditModalOpen(isOpen);
-    };
+    const handleCreateEventRedirect = () => navigate('/');
+    const toggleEditModal = (isOpen) => setIsEditModalOpen(isOpen);
 
     return {
         user,

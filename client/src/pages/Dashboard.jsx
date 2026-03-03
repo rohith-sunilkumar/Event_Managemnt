@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useDashboardController } from '../hooks/useDashboardController';
-import HomeNavbar from '../components/home/HomeNavbar';
-import EventCard from '../components/home/EventCard';
-import EventDetailsModal from '../components/home/EventDetailsModal';
-import CreateEventModal from '../components/home/CreateEventModal';
+import { useDashboardController } from '../controllers/useDashboardController';
+import HomeNavbar from '../components/layout/HomeNavbar';
+import EventCard from '../components/event/EventCard';
+import EventDetailsModal from '../components/event/EventDetailsModal';
+import CreateEventModal from '../components/event/CreateEventModal';
 import { LayoutDashboard, Briefcase, Lock, Globe, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';

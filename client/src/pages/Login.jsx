@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoginController } from '../hooks/useLoginController';
+import { useLoginController } from '../controllers/useAuthController';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { LogIn, Mail, Lock, AlertCircle } from 'lucide-react';

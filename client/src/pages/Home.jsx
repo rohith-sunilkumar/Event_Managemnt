@@ -1,10 +1,10 @@
 import React from 'react';
-import { useHomeController } from '../hooks/useHomeController';
-import HomeNavbar from '../components/home/HomeNavbar';
-import HomeHero from '../components/home/HomeHero';
-import EventList from '../components/home/EventList';
-import CreateEventModal from '../components/home/CreateEventModal';
-import EventDetailsModal from '../components/home/EventDetailsModal';
+import { useHomeController } from '../controllers/useHomeController';
+import HomeNavbar from '../components/layout/HomeNavbar';
+import HomeHero from '../components/layout/HomeHero';
+import EventList from '../components/event/EventList';
+import CreateEventModal from '../components/event/CreateEventModal';
+import EventDetailsModal from '../components/event/EventDetailsModal';
 
 const Home = () => {
     const {
