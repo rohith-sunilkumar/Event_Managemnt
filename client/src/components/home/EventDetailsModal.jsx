@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import { toast } from 'react-toastify';
 import { X, Calendar, MapPin, Tag, AlignLeft, User, Mail, UserPlus, CheckCircle2, Users, ArrowLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SERVER_URL, DEFAULT_EVENT_IMAGE } from '../../services/api';
@@ -13,7 +14,6 @@ const EventDetailsModal = ({ event, isOpen, onClose, initialShowGuests = false }
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [isRegistering, setIsRegistering] = useState(false);
-    const [registerError, setRegisterError] = useState('');
     const [registerSuccess, setRegisterSuccess] = useState(false);
     const [view, setView] = useState('details');
 
@@ -55,9 +55,8 @@ const EventDetailsModal = ({ event, isOpen, onClose, initialShowGuests = false }
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        setRegisterError('');
         if (!name.trim() || !email.trim()) {
-            setRegisterError('Name and email are required');
+            toast.error('Name and email are required.');
             return;
         }
         setIsRegistering(true);
@@ -67,8 +66,9 @@ const EventDetailsModal = ({ event, isOpen, onClose, initialShowGuests = false }
             setRegisterSuccess(true);
             setName('');
             setEmail('');
+            toast.success('You are now registered for this event! 🎉');
         } catch (err) {
-            setRegisterError(err.response?.data?.message || 'Registration failed. Please try again.');
+            toast.error(err.response?.data?.message || 'Registration failed. Please try again.');
         } finally {
             setIsRegistering(false);
         }
@@ -199,9 +199,6 @@ const EventDetailsModal = ({ event, isOpen, onClose, initialShowGuests = false }
                                                     </div>
                                                 ) : (
                                                     <form onSubmit={handleRegister} className="space-y-4">
-                                                        {registerError && (
-                                                            <p className="text-sm text-red-600 font-medium">{registerError}</p>
-                                                        )}
                                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                                             <div className="space-y-1.5">
                                                                 <label className="text-[9px] font-bold uppercase tracking-widest text-[#78716C]">Name</label>

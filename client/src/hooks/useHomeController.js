@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import { useAuth } from '../context/AuthContext';
 import { useEvents } from '../context/EventContext';
 
@@ -17,13 +18,16 @@ export const useHomeController = () => {
         try {
             if (editingEvent) {
                 await updateEvent(editingEvent._id, formData);
+                toast.success('Event updated successfully! ✨');
             } else {
                 await createEvent(formData);
+                toast.success('Event created successfully! 🎉');
             }
             setIsModalOpen(false);
             setEditingEvent(null);
         } catch (error) {
             console.error('Error in event operation:', error);
+            toast.error('Something went wrong. Please try again.');
             throw error;
         }
     };
@@ -32,8 +36,10 @@ export const useHomeController = () => {
         if (window.confirm('Are you sure you want to revoke this commission? This action is permanent.')) {
             try {
                 await deleteEvent(id);
+                toast.success('Event deleted successfully.');
             } catch (error) {
                 console.error('Error deleting event:', error);
+                toast.error('Failed to delete event. Please try again.');
             }
         }
     };

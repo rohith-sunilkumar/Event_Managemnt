@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { AuthProvider } from './context/AuthContext';
 import { EventProvider } from './context/EventContext';
 import { AdminAuthProvider } from './admin/context/AdminAuthContext';
@@ -18,6 +20,17 @@ import AdminDashboard from './admin/pages/AdminDashboard';
 function App() {
   return (
     <Router>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="light"
+        toastClassName="!rounded-2xl !font-sans !text-sm"
+      />
       {/* User auth wraps user routes */}
       <AuthProvider>
         <EventProvider>
