@@ -24,11 +24,9 @@ const Dashboard = () => {
     } = useDashboardController();
 
     const [selectedEvent, setSelectedEvent] = useState(null);
-    const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
     const handleReview = (event) => {
         setSelectedEvent(event);
-        setIsDetailsOpen(true);
     };
 
     return (
@@ -132,10 +130,9 @@ const Dashboard = () => {
             />
 
             <EventDetailsModal
-                isOpen={isDetailsOpen}
-                onOpenChange={setIsDetailsOpen}
+                isOpen={!!selectedEvent}
+                onClose={() => setSelectedEvent(null)}
                 event={selectedEvent}
-                user={user}
             />
 
             <footer className="mt-20 py-12 border-t border-[#C6A75E]/10 text-center">
