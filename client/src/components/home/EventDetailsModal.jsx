@@ -73,7 +73,7 @@ const EventDetailsModal = ({ event, isOpen, onClose, initialShowGuests = false }
         }
     };
 
-    if (!isOpen || !event) return null;
+    if (!event) return null;
 
     const imageSrc = event.image
         ? (event.image.startsWith('/') ? `${SERVER_URL}${event.image}` : event.image)
@@ -300,7 +300,7 @@ const EventDetailsModal = ({ event, isOpen, onClose, initialShowGuests = false }
                 </>
             )}
         </AnimatePresence>,
-        document.body
+        typeof window !== 'undefined' ? document.body : null
     );
 };
 
