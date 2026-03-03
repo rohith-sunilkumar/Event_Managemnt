@@ -24,7 +24,6 @@ const EventDetailsModal = ({ event, isOpen, onClose, initialShowGuests = false }
     useEffect(() => {
         if (isOpen && event) {
             setDisplayEvent(event);
-            setRegisterError('');
             setView(initialShowGuests && isCreator ? 'guests' : 'details');
             if (user) {
                 setName(user.username || '');
