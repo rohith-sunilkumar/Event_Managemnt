@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import * as eventModel from '../models/eventModel';
+import api from '../services/api';
 
 export const useProfileController = () => {
     const { user, logout, updateProfile } = useAuth();
@@ -13,8 +13,6 @@ export const useProfileController = () => {
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                // stats endpoint lives alongside events
-                const { default: api } = await import('../services/api');
                 const response = await api.get('/events/stats');
                 if (response.data.success) setStatsData(response.data.stats);
             } catch (error) {
