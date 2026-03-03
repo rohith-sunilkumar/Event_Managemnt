@@ -11,6 +11,7 @@ const EventDetailsModal = ({ event, isOpen, onClose, initialShowGuests = false }
     const { user } = useAuth();
     const { registerForEvent } = useEvents();
     const [displayEvent, setDisplayEvent] = useState(event);
+    const [mounted, setMounted] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [isRegistering, setIsRegistering] = useState(false);
@@ -20,6 +21,8 @@ const EventDetailsModal = ({ event, isOpen, onClose, initialShowGuests = false }
     const currentUserId = user?.id || user?._id;
     const eventCreatorId = event?.createdBy?._id || event?.createdBy;
     const isCreator = !!(currentUserId && eventCreatorId && currentUserId.toString() === eventCreatorId.toString());
+
+    useEffect(() => { setMounted(true); }, []);
 
     useEffect(() => {
         if (isOpen && event) {
@@ -73,7 +76,7 @@ const EventDetailsModal = ({ event, isOpen, onClose, initialShowGuests = false }
         }
     };
 
-    if (!event) return null;
+    if (!mounted || !event) return null;
 
     const imageSrc = event.image
         ? (event.image.startsWith('/') ? `${SERVER_URL}${event.image}` : event.image)
@@ -300,7 +303,7 @@ const EventDetailsModal = ({ event, isOpen, onClose, initialShowGuests = false }
                 </>
             )}
         </AnimatePresence>,
-        typeof window !== 'undefined' ? document.body : null
+        document.body
     );
 };
 
