@@ -4,14 +4,6 @@
 
 ---
 
-## 📸 Screenshots
-
-| Home | Dashboard | Profile |
-|------|-----------|---------|
-| Browse public events, register to attend | Manage your own events, track stats | View and edit your profile |
-
----
-
 ## 🛠️ Tech Stack
 
 ### Frontend
