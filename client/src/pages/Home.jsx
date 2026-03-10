@@ -70,7 +70,7 @@ const Home = () => {
 
             <footer className="mt-20 py-12 border-t border-[#C6A75E]/10 text-center">
                 <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-[#78716C]">
-                    Eventify Luxury Edition © 2026
+                    Eventify Edition
                 </span>
             </footer>
         </div>

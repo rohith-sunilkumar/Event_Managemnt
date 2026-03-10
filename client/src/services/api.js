@@ -10,10 +10,9 @@ export const DEFAULT_PROFILE_IMAGE = '/images/default_profile.png';
 
 const api = axios.create({
     baseURL: API_BASE_URL,
-    withCredentials: true,  // sends the cookie automatically on every request
+    withCredentials: true,  
 });
 
-// Response interceptor: if 401 redirect to login
 api.interceptors.response.use(
     (response) => response,
     (error) => {
