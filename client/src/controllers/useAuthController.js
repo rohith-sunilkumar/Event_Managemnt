@@ -17,7 +17,7 @@ export const useLoginController = () => {
         setIsLoading(true);
         try {
             await login(email, password);
-            navigate('/');
+            navigate('/home');
         } catch (err) {
             setError(err.response?.data?.message || 'Login failed. Please check your credentials.');
         } finally {
@@ -46,7 +46,7 @@ export const useRegisterController = () => {
         try {
             await register(username, email, password);
             setIsSuccess(true);
-            setTimeout(() => navigate('/login'), 2000);
+            setTimeout(() => navigate('/'), 2000);
         } catch (err) {
             setError(err.response?.data?.message || 'Registration failed. Please try again.');
         } finally {

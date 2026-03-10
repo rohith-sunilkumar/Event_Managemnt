@@ -10,15 +10,19 @@ export const DEFAULT_PROFILE_IMAGE = '/images/default_profile.png';
 
 const api = axios.create({
     baseURL: API_BASE_URL,
-    withCredentials: true,  
+    withCredentials: true,
 });
 
 api.interceptors.response.use(
     (response) => response,
     (error) => {
         if (error.response?.status === 401) {
-            if (window.location.pathname !== '/login' && window.location.pathname !== '/register') {
-                window.location.href = '/login';
+            if (
+                window.location.pathname !== '/' &&
+                window.location.pathname !== '/register' &&
+                window.location.pathname !== '/admin/login'
+            ) {
+                window.location.href = '/';
             }
         }
         return Promise.reject(error);

@@ -36,11 +36,11 @@ function App() {
         <EventProvider>
           <Routes>
             {/* ── User Routes ── */}
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-            <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+            <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
 
             {/* ── Admin Routes (own provider, isolated) ── */}
             <Route path="/admin/*" element={

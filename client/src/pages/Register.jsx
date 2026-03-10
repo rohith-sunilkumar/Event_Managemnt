@@ -130,7 +130,7 @@ const Register = () => {
                         <div className="mt-10 text-center">
                             <p className="text-[#78716C] font-medium">
                                 Already identified?{' '}
-                                <Link to="/login" className="text-[#C6A75E] hover:text-[#C6A75E]/80 font-bold underline underline-offset-4 transition-colors">
+                                <Link to="/" className="text-[#C6A75E] hover:text-[#C6A75E]/80 font-bold underline underline-offset-4 transition-colors">
                                     Sign In
                                 </Link>
                             </p>
